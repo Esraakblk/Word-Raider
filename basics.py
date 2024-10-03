@@ -3,12 +3,8 @@ import random
 game_title = "Word Raider"
 word_list = [] 
 with open("words.txt", "r") as file:
-    lines = file.readlines()
+    for line in file:
+        word = line.rsplit() # Remove trailing spaces and newline characters
+        word_list.append(word) # Add the word to the word list
 
-with open("words.txt", "w") as file:
-    for line in lines:
-        cleaned_line = re.sub(r'\d+', '', line).strip()
-        file.write(cleaned_line + '\n') 
-       
-
-file_path = "words.txt"
+guess_the_word = random.choice(word_list)
