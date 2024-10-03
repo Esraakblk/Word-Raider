@@ -1,4 +1,7 @@
-import re
+import random
+
+game_title = "Word Raider"
+word_list = [] 
 with open("words.txt", "r") as file:
     lines = file.readlines()
 
