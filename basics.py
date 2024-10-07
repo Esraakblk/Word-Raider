@@ -54,9 +54,15 @@ while turns_taken<max_turns:
     print(f"Incorrect letters: {incorrect_guesses}")
     turns_taken += 1
 
+    #Check if the player has won
     if the_guess == guess_the_word:
         print(f"Congratulations! You made a valid guess: {guess_the_word}")
         break
-    else:
-        print("Sorry, you made an invalid guess, try again!")
-        continue
+
+    #If the user reaches the maximum turns of rounds
+    if turns_taken == max_turns:
+        print(f"Sorry, you lost. You have {max_turns} rounds to guess the word.")
+        print(f"The word was {guess_the_word}")
+        break
+    
+    print(f"You have {max_turns - turns_taken} turns left." )
