@@ -31,6 +31,29 @@ while turns_taken<max_turns:
     if not the_guess.isalpha():
         print("Error! The guess must contain only letters.")
         continue
+
+    #Check each Letter in the guess against the word's letters
+    index = 0
+    for i in the_guess:
+        if i == guess_the_word[index]:
+            print(i, end=" ")
+            if i in misplaced_guesses:
+                misplaced_guesses.remove(i)
+        elif i in guess_the_word:
+            if i not in misplaced_guesses:
+                misplaced_guesses.append(i)
+            print("_", end=" ")
+        else:
+            if i not in incorrect_guesses:
+                incorrect_guesses.append(i)
+            print("_", end=" ")
+        index += 1
+
+    print("\n")
+    print(f"Misplaced letters: {misplaced_guesses}")
+    print(f"Incorrect letters: {incorrect_guesses}")
+    turns_taken += 1
+
     if the_guess == guess_the_word:
         print(f"Congratulations! You made a valid guess: {guess_the_word}")
         break
